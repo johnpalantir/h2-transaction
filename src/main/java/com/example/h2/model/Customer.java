@@ -1,21 +1,21 @@
-package com.example.h2;
+package com.example.h2.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Orders {
+public class Customer {
 
     @Id
     @GeneratedValue
     private int id;
     private String name;
 
-    public Orders() {
+    public Customer() {
     }
 
-    public Orders(int id, String name) {
+    public Customer(int id, String name) {
         this.id = id;
         this.name = name;
     }

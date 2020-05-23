@@ -1,25 +1,28 @@
 package com.example.h2.controllers;
 
-import com.example.h2.Orders;
-import com.example.h2.repostories.OrdersRepository;
+import com.example.h2.services.OrderService;
+import com.example.h2.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static com.example.h2.constants.OrderConstant.ORDERS;
 
 @RestController
 @RequestMapping("/api/v1/orders")
 public class OrderController {
 
     @Autowired
-    private OrdersRepository orderRepository;
+    private OrderService orderService;
 
     @PostMapping
-    public void addOrder(@RequestBody Orders order){
-
-        orderRepository.save(order);
+    public void save(@RequestBody Order order){
+        orderService.save(order);
     }
 
     @GetMapping
-    public String getOrders(){
-        return "found";
+    public List<Order> getAll(){
+        return orderService.findAll();
     }
 }
